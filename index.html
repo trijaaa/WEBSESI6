@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet" />
+    <title>Sesi 6 Darkmode</title>
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <a onclick="reRender()" id="home">HOME</a>
+            <a onclick="darkMode()" id="mode1">DARK MODE</a>
+            <a onclick="barbarMode()" id="mode2">BAR BAR MODE</a>
+            <a onclick="jombloMode()" id="mode3">JOMBLO MODE</a>
+        </nav>
+        <h1>SESI 6 DARKMODE CUY UNIVERSITY</h1>
+        <p class="info" id="info"></p>
+    </div>
+    <!-- initializing function script -->
+    <script>
+        let body = document.body;
+        let info = document.getElementById("info");
+        let mode1 = document.getElementById("mode1");
+        let mode2 = document.getElementById("mode2");
+        let mode3 = document.getElementById("mode3");
+        let home = document.getElementById("home");
+
+        const darkLimit = 5;
+        let darkCounter = 0;
+        let darkRemainingLeft;
+
+        
+        function darkMode() {
+            if (darkRemainingLeft == 1) {
+                info.textContent = "🐒 Jatah Fitur dark mode anda sudah habis 🐒"
+                mode1.style.display = "none";
+                home.textContent = "RESTART";
+                return;
+            }
+            
+            darkCounter += 1;
+            darkRemainingLeft = darkLimit - darkCounter;
+            
+            // Render ke info element
+            info.textContent = `Darkmode dipakai ${darkCounter}x, tersisa ${darkRemainingLeft}x`
+
+            body.classList.toggle("dark");
+            if (body.classList.contains("dark")) {
+                mode1.textContent = "LIGHT MODE"
+            } else {
+                mode1.textContent = "DARK MODE"
+            }
+        }
+        
+        const barbarLimit = 5;
+        let barbarCounter = 0;
+        let barbarRemainingLeft;
+
+        function barbarMode() {
+            if (barbarRemainingLeft == 1) {
+                info.textContent = "🐒 Jatah Fitur barbar mode anda sudah habis 🐒"
+                mode2.style.display = "none";
+                home.textContent = "RESTART";
+                return;
+            }
+
+            barbarCounter += 1;
+            barbarRemainingLeft = barbarLimit - barbarCounter;
+
+            // Render ke info element
+            info.textContent = `Barbar mode dipakai ${barbarCounter}x, tersisa ${barbarRemainingLeft}x`
+
+            body.classList.toggle("barbar");
+            if (body.classList.contains("barbar")) {
+                mode2.textContent = "LIGHT MODE";
+            } else {
+                mode2.textContent = "BARBAR MODE";
+            }
+        }
+
+        const jombloLimit = 5;
+        let jombloCounter = 0;
+        let jombloRemainingLeft;
+
+        function jombloMode() {
+            if (jombloRemainingLeft == 1) {
+                info.textContent = "🐒 Jatah Fitur jomblo mode anda sudah habis, cari pacar goblog! 🐒"
+                mode3.style.display = "none";
+                home.textContent = "RESTART";
+                return;
+            }
+
+            jombloCounter += 1;
+            jombloRemainingLeft = jombloLimit - jombloCounter;
+
+            // Render ke info element
+            info.textContent = `Jomblo dipakai ${jombloCounter}x, tersisa ${jombloRemainingLeft}x`
+
+            body.classList.toggle("jomblo");
+            if (body.classList.contains("jomblo")) {
+                mode3.textContent = "LIGHT MODE"
+            } else {
+                mode3.textContent = "JOMBLO MODE"
+            }
+        }
+
+        function reRender() {
+            location.reload();
+        }
+    </script>
+</body>
+
+</html>
